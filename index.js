@@ -375,8 +375,7 @@ const header = this.panel.querySelector('.panel-header');
     
     document.addEventListener('touchend', () => this.stopResizing());
 }
-      
-} 
+
                               
     // Panel manipulation methods
     showPanel() {
