@@ -92,11 +92,8 @@ class ChatStylist {
         document.head.appendChild(styleSheet);
     }
 
-   createEditorPanel() {
-    const panel = document.createElement('div');
-    panel.id = 'style-editor-panel';
-    panel.className = 'style-editor-panel';
-    panel.style.display = 'none';
+createEditorPanel() {
+    // ... existing panel creation code ...
 
     panel.innerHTML = `
         <div class="panel-header">
@@ -126,35 +123,107 @@ class ChatStylist {
                 <!-- Background Settings -->
                 <div class="control-group">
                     <label>背景样式 / Background Style</label>
-                    <!-- ... background settings content ... -->
+                    <select id="background-type" class="form-control">
+                        <option value="solid">纯色 / Solid</option>
+                        <option value="linear">线性渐变 / Linear Gradient</option>
+                        <option value="radial">径向渐变 / Radial Gradient</option>
+                    </select>
+
+                    <div id="solid-background" class="background-settings">
+                        <div class="color-picker-wrapper">
+                            <toolcool-color-picker id="background-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
+                        </div>
+                    </div>
+
+                    <div id="gradient-background" class="background-settings" style="display: none;">
+                        <div class="color-stop-container">
+                            <div class="color-stop">
+                                <toolcool-color-picker class="gradient-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
+                                <input type="number" class="gradient-position" value="0" min="0" max="100">
+                            </div>
+                            <div class="color-stop">
+                                <toolcool-color-picker class="gradient-color" color="rgba(255, 255, 255, 0.5)"></toolcool-color-picker>
+                                <input type="number" class="gradient-position" value="100" min="0" max="100">
+                            </div>
+                        </div>
+                        <div class="gradient-angle">
+                            <label>渐变角度 / Angle: <span class="angle-value">90°</span></label>
+                            <input type="range" class="gradient-angle-slider" min="0" max="360" value="90">
+                        </div>
+                    </div>
                 </div>
+
                 <!-- Padding Settings -->
                 <div class="control-group">
                     <label>内边距 / Padding</label>
-                    <!-- ... padding settings content ... -->
+                    <div class="padding-controls">
+                        <div class="padding-input">
+                            <input type="number" id="padding-top" value="10" min="0">
+                            <label>上 / Top</label>
+                        </div>
+                        <div class="padding-input">
+                            <input type="number" id="padding-right" value="15" min="0">
+                            <label>右 / Right</label>
+                        </div>
+                        <div class="padding-input">
+                            <input type="number" id="padding-bottom" value="10" min="0">
+                            <label>下 / Bottom</label>
+                        </div>
+                        <div class="padding-input">
+                            <input type="number" id="padding-left" value="15" min="0">
+                            <label>左 / Left</label>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Text Style Tab -->
             <div class="tab-content" data-tab="text">
-                <!-- Text Colors -->
                 <div class="control-group">
                     <label>主要文本 / Main Text</label>
-                    <!-- ... text color settings ... -->
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
+                    </div>
                 </div>
-                <!-- Quote Effects -->
+
                 <div class="control-group">
-                    <label>引用效果 / Quote Effects</label>
-                    <!-- ... quote effects settings ... -->
+                    <label>斜体文本 / Italic Text</label>
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="italics-text-color" color="rgba(183, 160, 255, 1)"></toolcool-color-picker>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>引用文本 / Quote Text</label>
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="quote-glow-enabled">
+                        启用引用荧光 / Enable Quote Glow
+                    </label>
+                    <div id="quote-glow-controls" style="display: none;">
+                        <div class="color-picker-wrapper">
+                            <toolcool-color-picker id="quote-glow-color" color="rgba(224, 159, 254, 0.8)"></toolcool-color-picker>
+                        </div>
+                        <div class="glow-intensity">
+                            <label>荧光强度 / Intensity: <span class="intensity-value">5</span></label>
+                            <input type="range" id="quote-glow-intensity" min="0" max="20" value="5">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="panel-resize-handle"></div>
     `;
 
     document.body.appendChild(panel);
     this.panel = panel;
 }
-
+    
   initEventListeners() {
     // Panel controls
     this.panel.querySelector('.close-btn').addEventListener('click', () => this.hidePanel());
