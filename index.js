@@ -1,53 +1,57 @@
-// index.js
+// Define the module name constant
 const MODULE_NAME = 'chat-stylist';
 
-// Register the extension properly
-window['extensions'] = window['extensions'] || {};
-window.extensions[MODULE_NAME] = {
-    name: MODULE_NAME,
-    init: initChatStylist,
-};
+// Create a class to manage the extension
+class ChatStylist {
+    constructor() {
+        this.settings = this.loadSettings();
+    }
 
-// Initialize extension settings
-if (!window.extension_settings[MODULE_NAME]) {
-    window.extension_settings[MODULE_NAME] = {};
-}
+    loadSettings() {
+        if (!window.extension_settings[MODULE_NAME]) {
+            window.extension_settings[MODULE_NAME] = {};
+        }
+        return window.extension_settings[MODULE_NAME];
+    }
 
-function initChatStylist() {
-    // Add the extension UI to SillyTavern's extension panel
-    const extensionHtml = `
-        <div id="chat-stylist-settings" class="extension-settings">
-            <div class="inline-drawer">
-                <div class="inline-drawer-toggle inline-drawer-header">
-                    <b>Chat Stylist / 聊天样式编辑器</b>
-                    <div class="inline-drawer-icon fa-solid fa-circle-chevron-down"></div>
-                </div>
-                <div class="inline-drawer-content">
-                    <div id="chat-stylist-button" class="menu_button">
-                        <div class="button_content">
-                            <i class="fa-solid fa-palette"></i>
-                            <span>Style Editor / 样式编辑器</span>
+    init() {
+        // Create and append the extension UI
+        const extensionHtml = `
+            <div id="chat-stylist-settings" class="extension-settings">
+                <div class="inline-drawer">
+                    <div class="inline-drawer-toggle inline-drawer-header">
+                        <b>Chat Stylist / 聊天样式编辑器</b>
+                        <div class="inline-drawer-icon fa-solid fa-circle-chevron-down"></div>
+                    </div>
+                    <div class="inline-drawer-content">
+                        <div id="chat-stylist-button" class="menu_button">
+                            <div class="button_content">
+                                <i class="fa-solid fa-palette"></i>
+                                <span>Style Editor / 样式编辑器</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `;
+        `;
 
-    $('#extensions_settings2').append(extensionHtml);
-    
-    // Initialize button functionality
-    $('#chat-stylist-button').on('click', function() {
-        console.log('Style editor button clicked');
-        // Add your panel toggle logic here
-    });
+        $('#extensions_settings2').append(extensionHtml);
+        
+        // Initialize event listeners
+        $('#chat-stylist-button').on('click', () => {
+            console.log('Style editor button clicked');
+            // Panel toggle logic will be added here
+        });
+    }
 }
 
+// Register the extension
+window['extensions'] = window['extensions'] || {};
+window['extensions'][MODULE_NAME] = new ChatStylist();
+
 // Initialize when the document is ready
-jQuery(async () => {
-    if (window.extensions && window.extensions[MODULE_NAME]) {
-        window.extensions[MODULE_NAME].init();
-    }
+jQuery(() => {
+    window['extensions'][MODULE_NAME].init();
 });
 
 // Add to index.js
