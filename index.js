@@ -36,11 +36,13 @@ if (!window.extension_settings[MODULE_NAME]) {
     };
 }
 
+import { PanelInteraction } from './src/utils/DragResize.js';
+
 class ChatStylist {
     constructor() {
         this.settings = window.extension_settings[MODULE_NAME];
         this.currentCharacter = null;
-        this.panel = null;
+        this.panelInteraction = null;
     }
 
     init() {
