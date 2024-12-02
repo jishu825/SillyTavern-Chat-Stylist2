@@ -123,7 +123,22 @@
 }
 
 .style-editor-panel {
-    user-select: none; /* Prevents text selection while dragging */
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    width: 320px;
+    min-width: 320px;
+    min-height: 200px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    z-index: 10000;
+    resize: both;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    transform: translate3d(0, 0, 0); /* Enable hardware acceleration */
 }
 
 .panel-header {
