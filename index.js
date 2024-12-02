@@ -155,43 +155,45 @@ class ChatStylist {
     this.panel = panel;
 }
 
-    initEventListeners() {
-        // Panel controls
-        this.panel.querySelector('.close-btn').addEventListener('click', () => this.hidePanel());
-        this.panel.querySelector('.minimize-btn').addEventListener('click', () => this.toggleMinimize());
-        
-        // Dragging
-        this.panel.querySelector('.panel-header').addEventListener('mousedown', (e) => this.startDragging(e));
-        document.addEventListener('mousemove', (e) => this.handleDragging(e));
-        document.addEventListener('mouseup', () => this.stopDragging());
+  initEventListeners() {
+    // Panel controls
+    this.panel.querySelector('.close-btn').addEventListener('click', () => this.hidePanel());
+    this.panel.querySelector('.minimize-btn').addEventListener('click', () => this.toggleMinimize());
+    
+    // Dragging
+    this.panel.querySelector('.panel-header').addEventListener('mousedown', (e) => this.startDragging(e));
+    document.addEventListener('mousemove', (e) => this.handleDragging(e));
+    document.addEventListener('mouseup', () => this.stopDragging());
 
-        // Resizing
-        this.panel.querySelector('.panel-resize-handle').addEventListener('mousedown', (e) => this.startResizing(e));
-        document.addEventListener('mousemove', (e) => this.handleResizing(e));
-        document.addEventListener('mouseup', () => this.stopResizing());
+    // Resizing
+    this.panel.querySelector('.panel-resize-handle').addEventListener('mousedown', (e) => this.startResizing(e));
+    document.addEventListener('mousemove', (e) => this.handleResizing(e));
+    document.addEventListener('mouseup', () => this.stopResizing());
 
-        // Style controls
-        const characterSelect = this.panel.querySelector('#character-select');
-        characterSelect.addEventListener('change', () => this.onCharacterSelect());
+    // Style controls
+    const characterSelect = this.panel.querySelector('#character-select');
+    characterSelect.addEventListener('change', () => this.onCharacterSelect());
 
-        const backgroundType = this.panel.querySelector('#background-type');
-        backgroundType.addEventListener('change', () => this.onBackgroundTypeChange());
+    const backgroundType = this.panel.querySelector('#background-type');
+    backgroundType.addEventListener('change', () => this.onBackgroundTypeChange());
 
-        // Color pickers
-        const colorPickers = this.panel.querySelectorAll('toolcool-color-picker');
-        colorPickers.forEach(picker => {
-            picker.addEventListener('change', () => this.applyStyles());
-        });
+    // Color pickers
+    const colorPickers = this.panel.querySelectorAll('toolcool-color-picker');
+    colorPickers.forEach(picker => {
+        picker.addEventListener('change', () => this.applyStyles());
+    });
 
-        // Quote glow
-        const glowEnabled = this.panel.querySelector('#quote-glow-enabled');
-        glowEnabled.addEventListener('change', () => this.toggleQuoteGlow());
+    // Quote glow
+    const glowEnabled = this.panel.querySelector('#quote-glow-enabled');
+    glowEnabled.addEventListener('change', () => this.toggleQuoteGlow());
 
-        // Padding inputs
-        const paddingInputs = this.panel.querySelectorAll('.padding-input input');
-        paddingInputs.forEach(input => {
-            input.addEventListener('change', () => this.applyStyles()); 
-   
+    // Padding inputs
+    const paddingInputs = this.panel.querySelectorAll('.padding-input input');
+    paddingInputs.forEach(input => {
+        input.addEventListener('change', () => this.applyStyles());
+    });
+
+    // Tab switching
     this.panel.querySelectorAll('.tab-button').forEach(button => {
         button.addEventListener('click', () => {
             const tabName = button.dataset.tab;
@@ -220,7 +222,7 @@ class ChatStylist {
             this.resetStyles();
         }
     });
-}
+} 
                               
     // Panel manipulation methods
     showPanel() {
