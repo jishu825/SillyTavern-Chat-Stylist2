@@ -48,14 +48,14 @@ class ChatStylist {
             <div id="chat-stylist-settings" class="extension-settings">
                 <div class="inline-drawer">
                     <div class="inline-drawer-toggle inline-drawer-header">
-                        <b class="title">Chat Stylist / 聊天样式编辑器</b>
+                        <b class="title">聊天气泡样式编辑器 / Chat Stylist</b>
                         <div class="inline-drawer-icon fa-solid fa-circle-chevron-down"></div>
                     </div>
                     <div class="inline-drawer-content">
                         <div class="chat-stylist-control">
                             <div id="chat-stylist-button" class="menu_button">
                                 <i class="fa-solid fa-palette"></i>
-                                <span class="button-label">Style Editor / 样式编辑器</span>
+                                <span class="button-label">样式编辑器 / Style Editor</span>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@ class ChatStylist {
         const panelHtml = `
             <div id="style-editor-panel" class="style-editor-panel">
                 <div class="panel-header">
-                    <div class="header-title">Style Editor / 样式编辑器</div>
+                    <div class="header-title">样式编辑器 / Style Editor</div>
                     <div class="header-controls">
                         <button class="minimize-btn" title="Minimize">
                             <i class="fa-solid fa-minus"></i>
@@ -162,26 +162,26 @@ class ChatStylist {
                 </div>
                 <div class="panel-content">
                     <div class="control-group">
-                        <label>Select Character / 选择角色</label>
+                        <label>选择角色 / Select Character</label>
                         <select id="character-select" class="form-control">
                             <option value="">Choose a character...</option>
                         </select>
                     </div>
                     <div class="style-controls" style="display: none;">
                         <div class="control-group">
-                            <label>Background Color / 背景颜色</label>
+                            <label>气泡背景 / Bubble Background</label>
                             <div class="color-picker-wrapper">
                                 <toolcool-color-picker id="background-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label>Main Text / 主要文本</label>
+                            <label>主要文本 / Main Text</label>
                             <div class="color-picker-wrapper">
                                 <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label>Quote Text / 引用文本</label>
+                            <label>引用文本 / Quote Text</label>
                             <div class="color-picker-wrapper">
                                 <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
                             </div>
@@ -189,7 +189,7 @@ class ChatStylist {
                         <div class="control-group">
                             <label>
                                 <input type="checkbox" id="quote-glow-enabled">
-                                Enable Quote Glow / 启用引用荧光
+                                启用引用荧光 / Enable Quote Glow
                             </label>
                             <div id="quote-glow-controls" style="display: none;">
                                 <div class="color-picker-wrapper">
