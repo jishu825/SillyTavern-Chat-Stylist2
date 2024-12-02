@@ -1,0 +1,13 @@
+{
+    "display_name": "Chat Stylist",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "云展",
+    "version": "1.0.0",
+    "homePage": "https://github.com/Yunzheng/SillyTavern-Chat-Stylist",
+    "auto_update": true,
+    "extension_api_version": 1
+}

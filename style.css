@@ -1,0 +1,25 @@
+.chat-stylist-panel {
+    background: #2d2d2d;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.chat-stylist-header {
+    background: #1a1a1a;
+    padding: 10px;
+}
+
+.chat-stylist-content {
+    padding: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    background: #3d3d3d;
+    color: #ffffff;
+    border: 1px solid #666;
+    border-radius: 4px;
+}
