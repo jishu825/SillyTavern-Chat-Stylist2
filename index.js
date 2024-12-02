@@ -88,12 +88,40 @@ class ChatStylist {
 }
 
     initStyles() {
-        const styleSheet = document.createElement('style');
-        document.head.appendChild(styleSheet);
-    }
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        .style-editor-panel {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            width: 320px;
+            min-width: 320px;
+            min-height: 200px;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            z-index: 10000;
+            resize: both;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .panel-content {
+            padding: 15px;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+        }
+    `;
+    document.head.appendChild(styleSheet);
+}
 
 createEditorPanel() {
-    // ... existing panel creation code ...
+    const panel = document.createElement('div');
+    panel.id = 'style-editor-panel';
+    panel.className = 'style-editor-panel';
+    panel.style.display = 'none';
 
     panel.innerHTML = `
         <div class="panel-header">
@@ -222,6 +250,10 @@ createEditorPanel() {
 
     document.body.appendChild(panel);
     this.panel = panel;
+
+    // Add initial position
+    panel.style.top = '50px';
+    panel.style.right = '20px';
 }
     
   initEventListeners() {
