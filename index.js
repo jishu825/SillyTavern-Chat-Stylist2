@@ -124,19 +124,19 @@ createEditorPanel() {
     panel.style.display = 'none';
 
     panel.innerHTML = `
-        <div class="panel-header">
-            <div class="header-title">聊天气泡样式编辑器 / Chat Stylist</div>
-            <div class="header-tabs">
-                <button class="tab-button active" data-tab="bubble">气泡样式</button>
-                <button class="tab-button" data-tab="text">文本样式</button>
-            </div>
-            <div class="header-controls">
-                <button class="save-btn" title="保存样式"><i class="fa-solid fa-save"></i></button>
-                <button class="reset-btn" title="重置样式"><i class="fa-solid fa-rotate-left"></i></button>
-                <button class="minimize-btn"><i class="fa-solid fa-minus"></i></button>
-                <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-        </div>
+        // In createEditorPanel(), update the panel-header section:
+<div class="panel-header">
+    <div class="header-tabs">
+        <button class="tab-button active" data-tab="bubble">气泡样式</button>
+        <button class="tab-button" data-tab="text">文本样式</button>
+    </div>
+    <div class="header-controls">
+        <button class="save-btn" title="保存样式"><i class="fa-solid fa-save"></i></button>
+        <button class="reset-btn" title="重置样式"><i class="fa-solid fa-rotate-left"></i></button>
+        <button class="minimize-btn"><i class="fa-solid fa-minus"></i></button>
+        <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+</div>
         <div class="panel-content">
             <!-- Character Selection (Common) -->
             <div class="control-group">
