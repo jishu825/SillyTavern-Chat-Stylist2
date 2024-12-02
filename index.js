@@ -57,8 +57,9 @@ class ChatStylist {
         this.resizeStart = { width: 0, height: 0, x: 0, y: 0 };
     }
 
-    init() {
-    // 添加扩展按钮到扩展设置面板
+    
+     init() {
+    // Add extension button to settings panel
     const extensionHtml = `
         <div id="chat-stylist-settings" class="extension-settings">
             <div class="inline-drawer">
@@ -80,7 +81,6 @@ class ChatStylist {
     
     $('#extensions_settings2').append(extensionHtml);
     
-    // 绑定按钮点击事件
     $('#chat-stylist-button').on('click', () => {
         if (!this.panel) {
             this.createEditorPanel();
@@ -123,42 +123,26 @@ class ChatStylist {
 }
 
 createEditorPanel() {
+    // Create the panel element
     const panel = document.createElement('div');
     panel.id = 'style-editor-panel';
     panel.className = 'style-editor-panel';
-    panel.style.display = 'none';  
+    panel.style.display = 'none';
 
-    document.body.appendChild(panel);
-    this.panel = panel;
-
-    // Ensure color pickers are properly initialized
-    setTimeout(() => {
-        this.panel.querySelectorAll('toolcool-color-picker').forEach(picker => {
-            if (!picker.initialized) {
-                picker.setAttribute('color', picker.getAttribute('color'));
-            }
-        });
-    }, 100);
-
-    // Initial positioning
-    panel.style.right = '';
-    panel.style.left = '20px';
-    panel.style.top = '50px';
-}
-
+    // Define the panel's HTML content
     panel.innerHTML = `
-<div class="panel-header">
-    <div class="header-tabs">
-        <button class="tab-button active" data-tab="bubble">气泡样式</button>
-        <button class="tab-button" data-tab="text">文本样式</button>
-    </div>
-    <div class="header-controls">
-        <button class="save-btn" title="保存样式"><i class="fa-solid fa-save"></i></button>
-        <button class="reset-btn" title="重置样式"><i class="fa-solid fa-rotate-left"></i></button>
-        <button class="minimize-btn"><i class="fa-solid fa-minus"></i></button>
-        <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-</div>
+        <div class="panel-header">
+            <div class="header-tabs">
+                <button class="tab-button active" data-tab="bubble">气泡样式</button>
+                <button class="tab-button" data-tab="text">文本样式</button>
+            </div>
+            <div class="header-controls">
+                <button class="save-btn" title="保存样式"><i class="fa-solid fa-save"></i></button>
+                <button class="reset-btn" title="重置样式"><i class="fa-solid fa-rotate-left"></i></button>
+                <button class="minimize-btn"><i class="fa-solid fa-minus"></i></button>
+                <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
         <div class="panel-content">
             <!-- Character Selection (Common) -->
             <div class="control-group">
@@ -278,9 +262,18 @@ createEditorPanel() {
     document.body.appendChild(panel);
     this.panel = panel;
 
-    // Add initial position
+    // Set initial position
     panel.style.top = '50px';
     panel.style.right = '20px';
+
+    // Initialize color pickers
+    setTimeout(() => {
+        panel.querySelectorAll('toolcool-color-picker').forEach(picker => {
+            if (!picker.initialized) {
+                picker.setAttribute('color', picker.getAttribute('color'));
+            }
+        });
+    }, 100);
 }
     
   initEventListeners() {
