@@ -124,7 +124,6 @@ createEditorPanel() {
     panel.style.display = 'none';
 
     panel.innerHTML = `
-        // In createEditorPanel(), update the panel-header section:
 <div class="panel-header">
     <div class="header-tabs">
         <button class="tab-button active" data-tab="bubble">气泡样式</button>
@@ -163,7 +162,7 @@ createEditorPanel() {
                         </div>
                     </div>
 
-                    // In createEditorPanel(), update the gradient-background section:
+                    
 <div id="gradient-background" class="background-settings" style="display: none;">
     <div class="color-stop-container">
         <div class="color-stop">
