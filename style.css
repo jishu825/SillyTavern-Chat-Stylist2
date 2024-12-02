@@ -206,6 +206,18 @@ select.form-control {
     gap: 10px;
 }
 
+/* Add to style.css */
+.gradient-position-control {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gradient-position-control label {
+    font-size: 11px;
+    color: #999;
+}
+
 .gradient-position {
     width: 60px;
     padding: 4px 8px;
