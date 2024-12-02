@@ -53,11 +53,39 @@ class ChatStylist {
     }
 
     init() {
-        this.initStyles();
-        this.createEditorPanel();
-        this.initEventListeners();
-        this.applyExistingStyles();
-    }
+    // 添加扩展按钮到扩展设置面板
+    const extensionHtml = `
+        <div id="chat-stylist-settings" class="extension-settings">
+            <div class="inline-drawer">
+                <div class="inline-drawer-toggle inline-drawer-header">
+                    <b class="title">聊天气泡样式编辑器 / Chat Stylist</b>
+                    <div class="inline-drawer-icon fa-solid fa-circle-chevron-down"></div>
+                </div>
+                <div class="inline-drawer-content">
+                    <div class="chat-stylist-control">
+                        <div id="chat-stylist-button" class="menu_button">
+                            <i class="fa-solid fa-palette"></i>
+                            <span class="button-label">打开样式编辑器 / Open Style Editor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    $('#extensions_settings2').append(extensionHtml);
+    
+    // 绑定按钮点击事件
+    $('#chat-stylist-button').on('click', () => {
+        if (!this.panel) {
+            this.createEditorPanel();
+            this.initEventListeners();
+        }
+        this.showPanel();
+    });
+
+    this.initStyles();
+}
 
     initStyles() {
         const styleSheet = document.createElement('style');
