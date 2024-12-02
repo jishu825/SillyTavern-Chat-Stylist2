@@ -108,13 +108,17 @@
         border-radius: 0;
     }
 
-    .header-tabs {
-        flex: 1;
-        justify-content: center;
+    .header-title {
+        display: none; /* Hides the title on mobile */
     }
-
+    
+    .header-tabs {
+        margin: 0 10px;
+    }
+    
     .tab-button {
-        padding: 8px 16px;
+        padding: 6px 10px;
+        font-size: 12px;
     }
 }
 
