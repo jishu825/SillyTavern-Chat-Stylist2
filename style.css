@@ -1,71 +1,8 @@
-.chat-stylist-panel {
-    background: #2d2d2d;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-}
-
-.chat-stylist-header {
-    background: #1a1a1a;
-    padding: 10px;
-}
-
-.chat-stylist-content {
-    padding: 15px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-control {
-    background: #3d3d3d;
-    color: #ffffff;
-    border: 1px solid #666;
-    border-radius: 4px;
-}
-
-/* Add to style.css */
-.chat-stylist-button {
-    display: flex;
-    align-items: center;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.chat-stylist-button .button_content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-}
-
-.chat-stylist-button .button_text {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.chat-stylist-button .button_text_en,
-.chat-stylist-button .button_text_zh {
-    font-size: 14px;
-}
-
-.chat-stylist-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.chat-stylist-button i {
-    font-size: 16px;
-    width: 20px;
-    text-align: center;
-}
-
-/* 面板基础样式 */
 .style-editor-panel {
     position: fixed;
     top: 50px;
     right: 20px;
+    width: 320px;
     min-width: 320px;
     min-height: 200px;
     background: #2d2d2d;
@@ -74,10 +11,83 @@
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     z-index: 10000;
     resize: both;
-    overflow: auto;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
 }
 
-/* 渐变控制样式 */
+.panel-header {
+    background: #1a1a1a;
+    padding: 12px 15px;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+}
+
+.header-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.header-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.header-controls button {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.header-controls button:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+}
+
+.panel-content {
+    padding: 15px;
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+.control-group:last-child {
+    margin-bottom: 0;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #ccc;
+}
+
+select.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    background: #3d3d3d;
+    border: 1px solid #555;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+}
+
+.color-picker-wrapper {
+    margin-top: 8px;
+}
+
 .gradient-controls {
     margin-top: 10px;
     padding: 10px;
@@ -85,10 +95,11 @@
     border-radius: 6px;
 }
 
-.color-stop-list {
+.color-stop-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .color-stop {
@@ -99,21 +110,37 @@
 
 .gradient-position {
     width: 60px;
-    padding: 4px;
+    padding: 4px 8px;
     background: #3d3d3d;
     border: 1px solid #555;
     border-radius: 4px;
     color: #fff;
 }
 
-/* 内边距控制样式 */
+.add-color-stop {
+    width: 100%;
+    padding: 8px;
+    background: #3d3d3d;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-color-stop:hover {
+    background: #4d4d4d;
+}
+
+.gradient-angle {
+    margin-top: 10px;
+}
+
 .padding-controls {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    padding: 10px;
-    background: rgba(0,0,0,0.2);
-    border-radius: 6px;
+    margin-top: 8px;
 }
 
 .padding-input {
@@ -124,14 +151,13 @@
 
 .padding-input input {
     width: 100%;
-    padding: 4px;
+    padding: 4px 8px;
     background: #3d3d3d;
     border: 1px solid #555;
     border-radius: 4px;
     color: #fff;
 }
 
-/* 拖动手柄样式 */
 .panel-resize-handle {
     position: absolute;
     right: 0;
@@ -143,19 +169,45 @@
     border-radius: 0 0 10px 0;
 }
 
-/* 控制按钮样式 */
-.control-button {
-    width: 100%;
-    padding: 8px;
+#quote-glow-controls {
     margin-top: 10px;
-    background: #3d3d3d;
-    border: 1px solid #555;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.2s;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
 }
 
-.control-button:hover {
-    background: #4d4d4d;
+.glow-intensity {
+    margin-top: 10px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin: 8px 0;
+}
+
+/* Scrollbar Styling */
+.panel-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.panel-content::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+.panel-content::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+.panel-content::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Color Picker Customization */
+toolcool-color-picker {
+    --tc-panel-width: 280px;
+    --tc-border-radius: 6px;
+    --tc-border-color: #555;
+    --tc-background-color: #3d3d3d;
+    width: 100%;
 }
