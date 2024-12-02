@@ -163,17 +163,25 @@ createEditorPanel() {
                         </div>
                     </div>
 
-                    <div id="gradient-background" class="background-settings" style="display: none;">
-                        <div class="color-stop-container">
-                            <div class="color-stop">
-                                <toolcool-color-picker class="gradient-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
-                                <input type="number" class="gradient-position" value="0" min="0" max="100">
-                            </div>
-                            <div class="color-stop">
-                                <toolcool-color-picker class="gradient-color" color="rgba(255, 255, 255, 0.5)"></toolcool-color-picker>
-                                <input type="number" class="gradient-position" value="100" min="0" max="100">
-                            </div>
-                        </div>
+                    // In createEditorPanel(), update the gradient-background section:
+<div id="gradient-background" class="background-settings" style="display: none;">
+    <div class="color-stop-container">
+        <div class="color-stop">
+            <toolcool-color-picker class="gradient-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
+            <div class="gradient-position-control">
+                <label>位置 / Position (%)</label>
+                <input type="number" class="gradient-position" value="0" min="0" max="100">
+            </div>
+        </div>
+        <div class="color-stop">
+            <toolcool-color-picker class="gradient-color" color="rgba(255, 255, 255, 0.5)"></toolcool-color-picker>
+            <div class="gradient-position-control">
+                <label>位置 / Position (%)</label>
+                <input type="number" class="gradient-position" value="100" min="0" max="100">
+            </div>
+        </div>
+    </div>
+</div>
                         <div class="gradient-angle">
                             <label>渐变角度 / Angle: <span class="angle-value">90°</span></label>
                             <input type="range" class="gradient-angle-slider" min="0" max="360" value="90">
