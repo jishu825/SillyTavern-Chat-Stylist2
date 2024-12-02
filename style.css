@@ -1,3 +1,83 @@
+/* Add to style.css */
+
+/* Tab Styling */
+.header-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 0 15px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    color: #999;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-button.active {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Action Buttons */
+.header-controls button {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.header-controls button:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .style-editor-panel {
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0;
+        resize: none;
+    }
+
+    .panel-resize-handle {
+        display: none;
+    }
+
+    .panel-header {
+        padding: 15px;
+        border-radius: 0;
+    }
+
+    .header-tabs {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .tab-button {
+        padding: 8px 16px;
+    }
+}
+
 .style-editor-panel {
     position: fixed;
     top: 50px;
