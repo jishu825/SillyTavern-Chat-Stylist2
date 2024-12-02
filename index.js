@@ -121,7 +121,25 @@ createEditorPanel() {
     const panel = document.createElement('div');
     panel.id = 'style-editor-panel';
     panel.className = 'style-editor-panel';
-    panel.style.display = 'none';
+    panel.style.display = 'none';  
+
+    document.body.appendChild(panel);
+    this.panel = panel;
+
+    // Ensure color pickers are properly initialized
+    setTimeout(() => {
+        this.panel.querySelectorAll('toolcool-color-picker').forEach(picker => {
+            if (!picker.initialized) {
+                picker.setAttribute('color', picker.getAttribute('color'));
+            }
+        });
+    }, 100);
+
+    // Initial positioning
+    panel.style.right = '';
+    panel.style.left = '20px';
+    panel.style.top = '50px';
+}
 
     panel.innerHTML = `
 <div class="panel-header">
@@ -352,31 +370,41 @@ createEditorPanel() {
         }
     }
 
-    // Drag and resize methods
-    startDragging(e) {
-        if (e.target.closest('.panel-resize-handle')) return;
-        
-        this.isDragging = true;
-        const rect = this.panel.getBoundingClientRect();
-        this.dragOffset = {
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
-        };
+  startDragging(e) {
+    // Don't start dragging if clicking buttons or resize handle
+    if (e.target.closest('.header-controls') || e.target.closest('.panel-resize-handle')) {
+        return;
     }
+    
+    this.isDragging = true;
+    this.panel.style.transition = 'none'; // Disable transitions while dragging
+    const rect = this.panel.getBoundingClientRect();
+    this.dragOffset = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
 
-    handleDragging(e) {
-        if (!this.isDragging) return;
+handleDragging(e) {
+    if (!this.isDragging) return;
 
-        const x = e.clientX - this.dragOffset.x;
-        const y = e.clientY - this.dragOffset.y;
+    e.preventDefault(); // Prevent text selection while dragging
+    
+    const x = e.clientX - this.dragOffset.x;
+    const y = e.clientY - this.dragOffset.y;
 
-        this.panel.style.left = `${Math.max(0, Math.min(window.innerWidth - this.panel.offsetWidth, x))}px`;
-        this.panel.style.top = `${Math.max(0, Math.min(window.innerHeight - this.panel.offsetHeight, y))}px`;
-    }
+    // Remove right positioning to allow left positioning to work
+    this.panel.style.right = '';
+    this.panel.style.left = `${Math.max(0, Math.min(window.innerWidth - this.panel.offsetWidth, x))}px`;
+    this.panel.style.top = `${Math.max(0, Math.min(window.innerHeight - this.panel.offsetHeight, y))}px`;
+}
 
-    stopDragging() {
+stopDragging() {
+    if (this.isDragging) {
         this.isDragging = false;
+        this.panel.style.transition = ''; // Re-enable transitions
     }
+}
 
     startResizing(e) {
         this.isResizing = true;
