@@ -162,8 +162,7 @@ createEditorPanel() {
                         </div>
                     </div>
 
-                    
-<div id="gradient-background" class="background-settings" style="display: none;">
+              <div id="gradient-background" class="background-settings" style="display: none;">
     <div class="color-stop-container">
         <div class="color-stop">
             <toolcool-color-picker class="gradient-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
@@ -180,13 +179,11 @@ createEditorPanel() {
             </div>
         </div>
     </div>
-</div>
-                        <div class="gradient-angle">
-                            <label>渐变角度 / Angle: <span class="angle-value">90°</span></label>
-                            <input type="range" class="gradient-angle-slider" min="0" max="360" value="90">
-                        </div>
-                    </div>
-                </div>
+    <div class="gradient-angle">
+        <label>渐变角度 / Angle: <span class="angle-value">90°</span></label>
+        <input type="range" class="gradient-angle-slider" min="0" max="360" value="90">
+    </div>
+</div>      
 
                 <!-- Padding Settings -->
                 <div class="control-group">
