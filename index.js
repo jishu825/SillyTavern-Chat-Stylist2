@@ -147,61 +147,132 @@ class ChatStylist {
     }
 
     createEditorPanel() {
-        const panelHtml = `
-            <div id="style-editor-panel" class="style-editor-panel">
-                <div class="panel-header">
-                    <div class="header-title">样式编辑器 / Style Editor</div>
-                    <div class="header-controls">
-                        <button class="minimize-btn" title="Minimize">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                        <button class="close-btn" title="Close">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
+        // 在createEditorPanel()方法中修改面板HTML
+const panelHtml = `
+    <div id="style-editor-panel" class="style-editor-panel">
+        <div class="panel-header">
+            <div class="header-title">样式编辑器 / Style Editor</div>
+            <div class="header-controls">
+                <button class="minimize-btn" title="最小化">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <button class="close-btn" title="关闭">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="control-group">
+                <label>选择角色 / Select Character</label>
+                <select id="character-select" class="form-control">
+                    <option value="">选择角色...</option>
+                </select>
+            </div>
+            <div class="style-controls" style="display: none;">
+                <!-- 背景样式设置 -->
+                <div class="control-group">
+                    <label>背景样式 / Background Style</label>
+                    <select id="background-type" class="form-control">
+                        <option value="solid">纯色 / Solid</option>
+                        <option value="linear">线性渐变 / Linear Gradient</option>
+                        <option value="radial">径向渐变 / Radial Gradient</option>
+                    </select>
+                    
+                    <!-- 纯色背景设置 -->
+                    <div id="solid-background" class="background-settings">
+                        <div class="color-picker-wrapper">
+                            <toolcool-color-picker id="background-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
+                        </div>
+                    </div>
+
+                    <!-- 渐变背景设置 -->
+                    <div id="gradient-background" class="background-settings" style="display: none;">
+                        <div class="gradient-controls">
+                            <div class="color-stop-list">
+                                <div class="color-stop">
+                                    <label>颜色点 1 / Color Stop 1</label>
+                                    <toolcool-color-picker class="gradient-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
+                                    <input type="number" class="gradient-position" value="0" min="0" max="100">%
+                                </div>
+                                <div class="color-stop">
+                                    <label>颜色点 2 / Color Stop 2</label>
+                                    <toolcool-color-picker class="gradient-color" color="rgba(255, 255, 255, 0.5)"></toolcool-color-picker>
+                                    <input type="number" class="gradient-position" value="100" min="0" max="100">%
+                                </div>
+                            </div>
+                            <button id="add-color-stop" class="control-button">
+                                <i class="fa-solid fa-plus"></i> 添加颜色点
+                            </button>
+                            
+                            <div class="gradient-angle-control">
+                                <label>渐变角度 / Gradient Angle: <span id="angle-value">90°</span></label>
+                                <input type="range" id="gradient-angle" min="0" max="360" value="90">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="panel-content">
-                    <div class="control-group">
-                        <label>选择角色 / Select Character</label>
-                        <select id="character-select" class="form-control">
-                            <option value="">Choose a character...</option>
-                        </select>
+
+                <!-- 文本样式设置 -->
+                <div class="control-group">
+                    <label>主要文本 / Main Text</label>
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
                     </div>
-                    <div class="style-controls" style="display: none;">
-                        <div class="control-group">
-                            <label>气泡背景 / Bubble Background</label>
-                            <div class="color-picker-wrapper">
-                                <toolcool-color-picker id="background-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
-                            </div>
+                </div>
+
+                <div class="control-group">
+                    <label>引用文本 / Quote Text</label>
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
+                    </div>
+                </div>
+
+                <!-- 引用文本特效 -->
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="quote-glow-enabled">
+                        启用引用荧光 / Enable Quote Glow
+                    </label>
+                    <div id="quote-glow-controls" style="display: none;">
+                        <div class="color-picker-wrapper">
+                            <toolcool-color-picker id="quote-glow-color" color="rgba(224, 159, 254, 0.8)"></toolcool-color-picker>
                         </div>
-                        <div class="control-group">
-                            <label>主要文本 / Main Text</label>
-                            <div class="color-picker-wrapper">
-                                <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
-                            </div>
+                        <div class="glow-intensity">
+                            <label>荧光强度 / Glow Intensity: <span id="glow-value">5</span></label>
+                            <input type="range" id="quote-glow-intensity" min="0" max="20" value="5">
                         </div>
-                        <div class="control-group">
-                            <label>引用文本 / Quote Text</label>
-                            <div class="color-picker-wrapper">
-                                <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
-                            </div>
+                    </div>
+                </div>
+
+                <!-- 内边距调整 -->
+                <div class="control-group">
+                    <label>内边距调整 / Padding</label>
+                    <div class="padding-controls">
+                        <div class="padding-input">
+                            <label>上 / Top</label>
+                            <input type="number" id="padding-top" value="10" min="0">
                         </div>
-                        <div class="control-group">
-                            <label>
-                                <input type="checkbox" id="quote-glow-enabled">
-                                启用引用荧光 / Enable Quote Glow
-                            </label>
-                            <div id="quote-glow-controls" style="display: none;">
-                                <div class="color-picker-wrapper">
-                                    <toolcool-color-picker id="quote-glow-color" color="rgba(224, 159, 254, 0.8)"></toolcool-color-picker>
-                                </div>
-                                <input type="range" id="quote-glow-intensity" min="0" max="20" value="5">
-                            </div>
+                        <div class="padding-input">
+                            <label>右 / Right</label>
+                            <input type="number" id="padding-right" value="15" min="0">
+                        </div>
+                        <div class="padding-input">
+                            <label>下 / Bottom</label>
+                            <input type="number" id="padding-bottom" value="10" min="0">
+                        </div>
+                        <div class="padding-input">
+                            <label>左 / Left</label>
+                            <input type="number" id="padding-left" value="15" min="0">
                         </div>
                     </div>
                 </div>
             </div>
-        `;
+        </div>
+        <!-- 添加拖动手柄 -->
+        <div class="panel-resize-handle"></div>
+    </div>
+`;
+        
         $('body').append(panelHtml);
         this.panel = $('#style-editor-panel');
         this.makeDraggable(this.panel[0], '.panel-header');
