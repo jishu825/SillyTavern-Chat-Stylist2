@@ -216,46 +216,47 @@ createEditorPanel() {
                 </div>
             </div>
 
-            <!-- Text Style Tab -->
-            <div class="tab-content" data-tab="text">
-                <div class="control-group">
-                    <label>主要文本 / Main Text</label>
-                    <div class="color-picker-wrapper">
-                        <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
-                    </div>
-                </div>
+           <!-- Text Style Tab -->
+<div class="tab-content" data-tab="text">
+    <div class="control-group">
+        <label>主要文本 / Main Text</label>
+        <div class="color-picker-wrapper">
+            <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
+        </div>
+    </div>
 
-                <div class="control-group">
-                    <label>斜体文本 / Italic Text</label>
-                    <div class="color-picker-wrapper">
-                        <toolcool-color-picker id="italics-text-color" color="rgba(183, 160, 255, 1)"></toolcool-color-picker>
-                    </div>
-                </div>
+    <div class="control-group">
+        <label>斜体文本 / Italic Text</label>
+        <div class="color-picker-wrapper">
+            <toolcool-color-picker id="italics-text-color" color="rgba(183, 160, 255, 1)"></toolcool-color-picker>
+        </div>
+    </div>
 
-                <div class="control-group">
-                    <label>引用文本 / Quote Text</label>
-                    <div class="color-picker-wrapper">
-                        <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
-                    </div>
-                </div>
+    <div class="control-group">
+        <label>引用文本 / Quote Text</label>
+        <div class="color-picker-wrapper">
+            <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
+        </div>
+    </div>
 
-                <div class="control-group">
-                    <label>
-                        <input type="checkbox" id="quote-glow-enabled">
-                        启用引用荧光 / Enable Quote Glow
-                    </label>
-                    <div id="quote-glow-controls" style="display: none;">
-                        <div class="color-picker-wrapper">
-                            <toolcool-color-picker id="quote-glow-color" color="rgba(224, 159, 254, 0.8)"></toolcool-color-picker>
-                        </div>
-                        <div class="glow-intensity">
-                            <label>荧光强度 / Intensity: <span class="intensity-value">5</span></label>
-                            <input type="range" id="quote-glow-intensity" min="0" max="20" value="5">
-                        </div>
-                    </div>
-                </div>
+    <div class="control-group">
+        <label>
+            <input type="checkbox" id="quote-glow-enabled">
+            启用引用荧光 / Enable Quote Glow
+        </label>
+        <div id="quote-glow-controls" style="display: none;">
+            <div class="color-picker-wrapper">
+                <toolcool-color-picker id="quote-glow-color" color="rgba(224, 159, 254, 0.8)"></toolcool-color-picker>
+            </div>
+            <div class="glow-intensity">
+                <label>荧光强度 / Intensity: <span class="intensity-value">5</span></label>
+                <input type="range" id="quote-glow-intensity" min="0" max="20" value="5">
             </div>
         </div>
+    </div>
+</div>
+
+              
         <div class="panel-resize-handle"></div>
     `;
 
@@ -343,6 +344,37 @@ createEditorPanel() {
             this.resetStyles();
         }
     });
+const header = this.panel.querySelector('.panel-header');
+    
+    // Touch events for dragging
+    header.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        this.startDragging(touch);
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        this.handleDragging(touch);
+    });
+    
+    document.addEventListener('touchend', () => this.stopDragging());
+
+    // Touch events for resizing
+    const resizeHandle = this.panel.querySelector('.panel-resize-handle');
+    
+    resizeHandle.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        this.startResizing(touch);
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        this.handleResizing(touch);
+    });
+    
+    document.addEventListener('touchend', () => this.stopResizing());
+}
+      
 } 
                               
     // Panel manipulation methods
