@@ -60,3 +60,102 @@
     width: 20px;
     text-align: center;
 }
+
+/* 面板基础样式 */
+.style-editor-panel {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    min-width: 320px;
+    min-height: 200px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    z-index: 10000;
+    resize: both;
+    overflow: auto;
+}
+
+/* 渐变控制样式 */
+.gradient-controls {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+}
+
+.color-stop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.color-stop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gradient-position {
+    width: 60px;
+    padding: 4px;
+    background: #3d3d3d;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+}
+
+/* 内边距控制样式 */
+.padding-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+}
+
+.padding-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.padding-input input {
+    width: 100%;
+    padding: 4px;
+    background: #3d3d3d;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+}
+
+/* 拖动手柄样式 */
+.panel-resize-handle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    cursor: se-resize;
+    background: linear-gradient(135deg, transparent 50%, #555 50%);
+    border-radius: 0 0 10px 0;
+}
+
+/* 控制按钮样式 */
+.control-button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    background: #3d3d3d;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.control-button:hover {
+    background: #4d4d4d;
+}
