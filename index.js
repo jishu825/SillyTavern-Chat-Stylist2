@@ -190,10 +190,38 @@ class ChatStylist {
         // Padding inputs
         const paddingInputs = this.panel.querySelectorAll('.padding-input input');
         paddingInputs.forEach(input => {
-            input.addEventListener('change', () => this.applyStyles());
+            input.addEventListener('change', () => this.applyStyles()); 
+   
+    this.panel.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const tabName = button.dataset.tab;
+            
+            // Update button states
+            this.panel.querySelectorAll('.tab-button').forEach(btn => 
+                btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Update content visibility
+            this.panel.querySelectorAll('.tab-content').forEach(content => 
+                content.classList.remove('active'));
+            this.panel.querySelector(`.tab-content[data-tab="${tabName}"]`)
+                .classList.add('active');
         });
-    }
+    });
 
+    // Save button
+    this.panel.querySelector('.save-btn').addEventListener('click', () => {
+        this.saveStyles();
+    });
+
+    // Reset button
+    this.panel.querySelector('.reset-btn').addEventListener('click', () => {
+        if (confirm('确定要重置当前角色的样式吗？')) {
+            this.resetStyles();
+        }
+    });
+}
+                              
     // Panel manipulation methods
     showPanel() {
         this.panel.style.display = 'block';
@@ -457,6 +485,22 @@ const paddingInputs = this.panel.querySelectorAll('.padding-input input');
             window.saveSettingsDebounced();
         }
     }
+
+saveStyles() {
+    if (!this.currentCharacter) return;
+    
+    this.applyStyles();
+    alert('样式已保存');
+}
+
+resetStyles() {
+    if (!this.currentCharacter) return;
+    
+    delete this.settings.styles[this.currentCharacter];
+    this.loadCharacterStyle();
+    this.applyStyles();
+}
+        
 }
 
 // Create and register the extension
