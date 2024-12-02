@@ -169,28 +169,29 @@ createEditorPanel() {
                         </div>
                     </div>
 
-              <div id="gradient-background" class="background-settings" style="display: none;">
-    <div class="color-stop-container">
-        <div class="color-stop">
-            <toolcool-color-picker class="gradient-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
-            <div class="gradient-position-control">
-                <label>位置 / Position (%)</label>
-                <input type="number" class="gradient-position" value="0" min="0" max="100">
-            </div>
-        </div>
-        <div class="color-stop">
-            <toolcool-color-picker class="gradient-color" color="rgba(255, 255, 255, 0.5)"></toolcool-color-picker>
-            <div class="gradient-position-control">
-                <label>位置 / Position (%)</label>
-                <input type="number" class="gradient-position" value="100" min="0" max="100">
-            </div>
-        </div>
-    </div>
-    <div class="gradient-angle">
-        <label>渐变角度 / Angle: <span class="angle-value">90°</span></label>
-        <input type="range" class="gradient-angle-slider" min="0" max="360" value="90">
-    </div>
-</div>      
+                    <div id="gradient-background" class="background-settings" style="display: none;">
+                        <div class="color-stop-container">
+                            <div class="color-stop">
+                                <toolcool-color-picker class="gradient-color" color="rgba(254, 222, 169, 0.5)"></toolcool-color-picker>
+                                <div class="gradient-position-control">
+                                    <label>位置 / Position (%)</label>
+                                    <input type="number" class="gradient-position" value="0" min="0" max="100">
+                                </div>
+                            </div>
+                            <div class="color-stop">
+                                <toolcool-color-picker class="gradient-color" color="rgba(255, 255, 255, 0.5)"></toolcool-color-picker>
+                                <div class="gradient-position-control">
+                                    <label>位置 / Position (%)</label>
+                                    <input type="number" class="gradient-position" value="100" min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gradient-angle">
+                            <label>渐变角度 / Angle: <span class="angle-value">90°</span></label>
+                            <input type="range" class="gradient-angle-slider" min="0" max="360" value="90">
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Padding Settings -->
                 <div class="control-group">
@@ -216,50 +217,50 @@ createEditorPanel() {
                 </div>
             </div>
 
-           <!-- Text Style Tab -->
-<div class="tab-content" data-tab="text">
-    <div class="control-group">
-        <label>主要文本 / Main Text</label>
-        <div class="color-picker-wrapper">
-            <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
-        </div>
-    </div>
+            <!-- Text Style Tab -->
+            <div class="tab-content" data-tab="text">
+                <div class="control-group">
+                    <label>主要文本 / Main Text</label>
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="main-text-color" color="rgba(208, 206, 196, 1)"></toolcool-color-picker>
+                    </div>
+                </div>
 
-    <div class="control-group">
-        <label>斜体文本 / Italic Text</label>
-        <div class="color-picker-wrapper">
-            <toolcool-color-picker id="italics-text-color" color="rgba(183, 160, 255, 1)"></toolcool-color-picker>
-        </div>
-    </div>
+                <div class="control-group">
+                    <label>斜体文本 / Italic Text</label>
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="italics-text-color" color="rgba(183, 160, 255, 1)"></toolcool-color-picker>
+                    </div>
+                </div>
 
-    <div class="control-group">
-        <label>引用文本 / Quote Text</label>
-        <div class="color-picker-wrapper">
-            <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
-        </div>
-    </div>
+                <div class="control-group">
+                    <label>引用文本 / Quote Text</label>
+                    <div class="color-picker-wrapper">
+                        <toolcool-color-picker id="quote-text-color" color="rgba(224, 159, 254, 1)"></toolcool-color-picker>
+                    </div>
+                </div>
 
-    <div class="control-group">
-        <label>
-            <input type="checkbox" id="quote-glow-enabled">
-            启用引用荧光 / Enable Quote Glow
-        </label>
-        <div id="quote-glow-controls" style="display: none;">
-            <div class="color-picker-wrapper">
-                <toolcool-color-picker id="quote-glow-color" color="rgba(224, 159, 254, 0.8)"></toolcool-color-picker>
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="quote-glow-enabled">
+                        启用引用荧光 / Enable Quote Glow
+                    </label>
+                    <div id="quote-glow-controls" style="display: none;">
+                        <div class="color-picker-wrapper">
+                            <toolcool-color-picker id="quote-glow-color" color="rgba(224, 159, 254, 0.8)"></toolcool-color-picker>
+                        </div>
+                        <div class="glow-intensity">
+                            <label>荧光强度 / Intensity: <span class="intensity-value">5</span></label>
+                            <input type="range" id="quote-glow-intensity" min="0" max="20" value="5">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="glow-intensity">
-                <label>荧光强度 / Intensity: <span class="intensity-value">5</span></label>
-                <input type="range" id="quote-glow-intensity" min="0" max="20" value="5">
-            </div>
         </div>
-    </div>
-</div>
-
-              
         <div class="panel-resize-handle"></div>
     `;
 
+    // Add to document
     document.body.appendChild(panel);
     this.panel = panel;
 
