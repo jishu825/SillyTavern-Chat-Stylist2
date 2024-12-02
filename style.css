@@ -23,3 +23,40 @@
     border: 1px solid #666;
     border-radius: 4px;
 }
+
+/* Add to style.css */
+.chat-stylist-button {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.chat-stylist-button .button_content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.chat-stylist-button .button_text {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.chat-stylist-button .button_text_en,
+.chat-stylist-button .button_text_zh {
+    font-size: 14px;
+}
+
+.chat-stylist-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-stylist-button i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
