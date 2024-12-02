@@ -260,23 +260,20 @@ createEditorPanel() {
         <div class="panel-resize-handle"></div>
     `;
 
-    // Add to document
     document.body.appendChild(panel);
-    this.panel = panel;
+        this.panel = panel;
 
-    // Set initial position
-    panel.style.top = '50px';
-    panel.style.right = '20px';
+        panel.style.top = '50px';
+        panel.style.right = '20px';
 
-    // Initialize color pickers
-    setTimeout(() => {
-        panel.querySelectorAll('toolcool-color-picker').forEach(picker => {
-            if (!picker.initialized) {
-                picker.setAttribute('color', picker.getAttribute('color'));
-            }
-        });
-    }, 100);
-}
+        setTimeout(() => {
+            panel.querySelectorAll('toolcool-color-picker').forEach(picker => {
+                if (!picker.initialized) {
+                    picker.setAttribute('color', picker.getAttribute('color'));
+                }
+            });
+        }, 100);
+    }
     
   initEventListeners() {
     // Panel controls
@@ -375,8 +372,7 @@ const header = this.panel.querySelector('.panel-header');
     
     document.addEventListener('touchend', () => this.stopResizing());
 }
-
-                              
+                          
     // Panel manipulation methods
     showPanel() {
         this.panel.style.display = 'block';
